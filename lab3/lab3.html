@@ -1,0 +1,113 @@
+
+<!-- saved from url=(0051)https://home.agh.edu.pl/~mkuta/tklab/lab3/lab3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+      
+      <title>Lab</title>
+      <link rel="StyleSheet" type="text/css" href="./lab3_files/style.css">
+   </head>
+   <body>
+
+<h2>Lab 3</h2>
+
+<a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/lab3-intro.pdf">Wprowadzenie</a>
+
+<p>
+Zadanie polega na stworzeniu i wypisaniu abstrakcyjnego drzewa składni (ang. abstract syntax tree, AST).
+
+Drzewo składni powinno uwzględniać w swoich węzłach następujące konstrukcje:
+</p><ul>
+<li> wyrażenia binarne,
+</li><li> wyrażenia relacyjne,
+</li><li> instrukcje przypisania,
+</li><li> instrukcje warunkowe <code>if-else</code>,
+</li><li> pętle: <code>while</code> oraz <code>for</code>,
+</li><li> instrukcje <code>break</code>, <code>continue</code> oraz <code>return</code>,
+</li><li> instrukcje <code>print</code>,
+</li><li> instrukcje złożone,
+</li><li> tablice oraz ich zakresy.
+</li></ul>
+
+
+<p>
+Przykładowo, dla poniższego <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example.txt">kodu</a>:
+
+</p><pre class="code">A = zeros(5); # create 5x5 matrix filled with zeros
+D = A.+B' ;   # add element-wise A with transpose of B
+
+for j = 1:10 
+    print j;
+</pre>
+
+translator powinien stworzyć odpowiadające mu drzewo składni (AST) oraz wypisać jego tekstową reprezentację
+na standardowym wyjściu:
+
+<pre class="code">=
+|  A
+|  zeros
+|  |  5
+=
+|  D
+|  .+
+|  |  A
+|  |  TRANSPOSE
+|  |  |  B
+FOR
+|  j
+|  RANGE
+|  |  1
+|  |  10
+|  PRINT
+|  |  j
+</pre>
+
+
+Przykładowe pliki wejściowe: <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example1.m">example1.m</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example2.m">example2.m</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example3.m">example3.m</a>
+
+<br>
+oraz odpowiadające wyjściowe drzewa składni:
+<a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example1.tree">example1.tree</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example2.tree">example2.tree</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/example3.tree">example3.tree</a>
+
+<p></p>
+
+
+<ul>
+
+<li>Do rozwiązania zadania można użyć generatora parserów <code>SLY</code> lub <code>PLY</code>.
+
+</li><li>Rozpoznawany język powinien być zgodny ze stworzoną gramatyką.
+Obecność białych znaków, sposób sformatowania tekstu nie ma wpływu na postać drzewa.
+
+</li><li>Drzewo abstrakcyjne składni (AST) powinno być wypisywane tylko dla syntaktycznie poprawnego wejścia.
+
+</li><li>Translator powinien wykrywać niepoprawne syntaktycznie wejście.
+W takim przypadku lepiej nie tworzyć drzewa syntaktycznego,
+ale dla niepoprawnych linii wypisywać numer linii wraz z informacją że wystąpił błąd.
+
+
+</li><li>Do stworzenia translatora, można użyć poprzednio stworzonych plików skanera oraz parsera.
+Nowe pliki, które zostaną stworzone, to <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/AST.py">AST.py</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/TreePrinter.py">TreePrinter.py</a>
+oraz <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/main.py">main.py</a> lub <a href="https://home.agh.edu.pl/~mkuta/tklab/lab3/main_sly.py">main_sly.py</a>.
+
+</li><li>W trakcie parsingu należy stworzyć drzewo syntaktyczne.
+Różnica między (konkretnym) drzewem parsingu (ang. <i>parse tree</i>) a 
+(abstrakcyjnym) drzewem syntaktycznym (ang. <i>syntax tree</i>) opisana jest
+<a href="http://eli.thegreenplace.net/2009/02/16/abstract-vs-concrete-syntax-trees">tutaj</a>.
+
+</li><li>W zależności od rodzaju nieterminala należy zdefiniować specyficzne dla nich klasy lub struktury danych
+(stała, zmienna, przypisanie, wyrażenie arytmetyczne, wyrażenie porównania, instrukcja warunkowa, lista instrukcji, itp.).
+
+</li><li>Dla każdej klasy należy zdefiniować funkcję <code>printTree</code> wypisującą 
+odpowiadającą danemu węzłowi część drzewa syntaktycznego.
+
+</li><li>Wszystkie funkcje <code>printTree</code> należy zdefiniować odpowiednio w klasie <code>TreePrinter</code>.
+Funkcje te zostaną zainstalowane w klasach odpowiadającym węzłom drzewa abstrakcyjnego
+przy pomocy dekoratora <code>@addToClass</code>.
+<a href="https://www.matthieuamiguet.ch/media/documents/TeachingCompilersWithPython_Paper.pdf"><code>@addToClass</code></a>.
+Dekoratory opisane są szczegółowo w <i>M. Lutz, Learning Python, 4th Ed., Chapt. 38</i>.
+
+<p></p>
+
+
+
+
+</li></ul></body></html>

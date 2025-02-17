@@ -1,0 +1,79 @@
+
+<!-- saved from url=(0051)https://home.agh.edu.pl/~mkuta/tklab/lab2/lab2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+      
+      <title>Lab</title>
+      <link rel="StyleSheet" type="text/css" href="./lab2_files/style.css">
+   </head>
+   <body>
+
+<h2>Lab 2</h2>
+
+<a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/lab2-intro.pdf">Wprowadzenie</a>
+
+<p>
+Zadanie polega na stworzeniu parsera języka do operacji macierzowych.
+Parser powinien rozponawać (akceptować) kod źródłowy  w formie tokenów,
+bądz zglaszać bląd parsingu w przypadku nieprawidlowego wejścia.
+
+Parser powinien rozpoznawać następujące konstrukcje:
+</p><ul>
+<li> wyrażenia binarne, w tym operacje macierzowe 'element po elemencie'
+</li><li> wyrażenia relacyjne,
+</li><li> negację unarną,
+</li><li> transpozycję macierzy,
+</li><li> inicjalizację macierzy konkretnymi wartościami,
+</li><li> macierzowe funkcje specjalne,
+</li><li> instrukcję przypisania, w tym różne operatory przypisania
+</li><li> instrukcję warunkową <code>if-else</code>,
+</li><li> pętle: <code>while</code> and <code>for</code>,
+</li><li> instrukcje <code>break</code>, <code>continue</code> oraz <code>return</code>,
+</li><li> instrukcję <code>print</code>,
+</li><li> instrukcje złożone,
+</li><li> tablice oraz ich zakresy.
+</li></ul>
+
+
+<p>
+Przykładowo, parser powinien akceptować następujący kod:
+
+</p><pre class="code">A = zeros(5); # create 5x5 matrix filled with zeros
+D = A.+B' ;   # add element-wise A with transpose of B
+
+for j = 1:10 
+    print j;
+</pre>
+
+Przykładowe poprawne syntaktycznie wejścia: <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/example1.m">example1.m</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/example2.m">example2.m</a>, <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/example3.m">example3.m</a>
+
+
+<p></p>
+
+
+<ul>
+
+<li>Do rozwiązania zadania należy użyć generatora parserów <code>SLY</code> lub <code>PLY</code>.
+
+</li><li>Rozpoznawany język powinien być spójny z przykładami z plików example<i>n</i>.m.
+Wystąpienia białych znaków oraz sposób formatowania tekstu nie powinny wpływać na poprawność kodu.
+
+</li><li>Parser powinien rozpoznawać niepoprawny syntaktycznie kod wejściowy.
+W takim przypadku należy wypisać numer niepoprawnej linii oraz informację o wystąpieniu błędu.
+
+</li><li>Przy tworzeniu parsera należy wykorzystać skaner stworzony na poprzednich zajęciach.
+
+</li><li>Do stworzenia skanera w SLY można wykorzystać pliki <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/parser_sly.py">parser_sly.py</a> oraz <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/main_sly.py">main_sly.py</a>.
+
+</li><li>Do stworzenia skanera w PLY można wykorzystać pliki <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/Mparser.py">Mparser.py</a> oraz <a href="https://home.agh.edu.pl/~mkuta/tklab/lab2/main.py">main.py</a>.
+
+<!--
+<li>W zależności od typu nieterminala, należy zdefiniować odpowiednie klasy i struktury danych.
+(stała, zmienna, przypisanie, wyrażenie binarne, instrukcja warunkowa, lista instrukcji, itp.).
+-->
+
+<p></p>
+
+
+
+
+</li></ul></body></html>
